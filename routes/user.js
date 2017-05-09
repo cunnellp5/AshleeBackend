@@ -36,7 +36,7 @@ router.get('/:id/gallery', (req,res)=>{
 })
 
 router.post('/:id/gallery', function (req, res, next){
-  User.addGalleryImg(req.body.image_url, req.body.description).then(data => {
+  User.addGalleryImg(req.params.id, req.body.image_url, req.body.description).then(data => {
     res.json({message: 'success'});
   })
 });
