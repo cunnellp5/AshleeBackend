@@ -10,6 +10,12 @@ module.exports = {
     getOneByEmail: function(email){
         return knex('user').where('email', email).first();
     },
+    addGalleryImg: function(user_id, image_url, description){
+      return knex('gallery_img').where('user_id', user_id).insert({
+        image_url: image_url,
+        description: description
+      })
+    },
     getGallery: function(user_id){
       return knex('gallery_img').where('user_id', user_id);
     },
@@ -21,6 +27,9 @@ module.exports = {
         image_url: image_url,
         description: description,
       })
+    },
+    deleteOneGallery: function(id){
+      return knex('gallery_img').where('id', id).del();
     },
     getHero: function(user_id){
       return knex('hero_img').where('user_id', user_id);

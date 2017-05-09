@@ -34,27 +34,28 @@ router.get('/:id/gallery', (req,res)=>{
     resError(res, 500, "Invalid ID");
   }
 })
-//update gallery at gallery id
-// router.put('/:id/gallery', function (req, res, next){
-//   knex('gallery_img').insert({
-    // image_url: req.body.name,
-    // description: req.body.type
-//   }, 'id').then((data) =>{
-//     res.json(data)
-//   });
-// });
+
+router.post('/:id/gallery', function (req, res, next){
+  User.addGalleryImg(req.body.image_url, req.body.description).then(data => {
+    res.json({message: 'success'});
+  })
+});
 router.get('/:id/gallery/:img', function (req, res, next){
   User.getOneGallery(req.params.img).then(data => {
     res.json(data);
   })
 });
-
 router.put('/:id/gallery/:img', function (req, res, next){
   User.editOneGallery(req.params.img, req.body.image_url, req.body.description).then(data => {
-    res.json(data);
+    res.json({message: 'success'});
   })
 });
 
+router.delete('/:id/gallery/:img', function(req, res, next) {
+  User.deleteOneGallery(req.params.img).then(data => {
+    res.json({message: 'success'});
+  })
+})
 
 router.get('/:id/hero', (req,res)=>{
   if (!isNaN(req.params.id)) {
