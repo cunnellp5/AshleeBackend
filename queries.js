@@ -12,6 +12,7 @@ module.exports = {
     },
     addGalleryImg: function(user_id, image_url, description){
       return knex('gallery_img').where('user_id', user_id).insert({
+        user_id: user_id,
         image_url: image_url,
         description: description
       })
