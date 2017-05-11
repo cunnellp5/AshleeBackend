@@ -9,6 +9,7 @@ var jwt = require('jsonwebtoken');
 var index = require('./routes/index');
 var user = require('./routes/user');
 var login = require('./routes/login')
+var pub = require('./routes/pub')
 
 var app = express();
 
@@ -25,8 +26,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/login', login)
+app.use('/login', login);
 app.use('/user', authorize, user);
+app.use('/pub', pub);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,7 +49,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
 //AUTHORIZE
 function authorize(req, res, next) {
   var authorization = req.get('Authorization');
@@ -67,8 +68,5 @@ function authorize(req, res, next) {
     next(error);
   }
 };
-
-
-
 
 module.exports = app;
