@@ -4,11 +4,11 @@ var router = express.Router();
 const User = require('../queries');
 const knex = require('../db/knex');
 /* GET users listing. */
-router.get('/user', function(req, res){
-  knex("ashlee").then((data)=>{
-    res.json(data)
-  });
-});
+// router.get('/user', function(req, res){
+//   knex("user").then((data)=>{
+//     res.json(data)
+//   });
+// });
 
 router.get('/:id', (req, res) => {
   if (!isNaN(req.params.id) && req.user.id == req.params.id) {
