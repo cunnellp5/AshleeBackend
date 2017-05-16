@@ -1,10 +1,10 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
 const User = require('../queries');
 var jwt = require('jsonwebtoken');
 
-require('dotenv').config();
 
 router.post('/', function(req, res, next) {
   if (!req.body.password || !req.body.email) {
