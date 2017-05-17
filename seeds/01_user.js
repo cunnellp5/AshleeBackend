@@ -1,5 +1,5 @@
-require('dotenv').config()
 const bcrypt = require('bcrypt')
+require('dotenv').config()
 
 exports.seed = (knex, Promise) => {
     return knex.raw('DELETE FROM "user"; ALTER SEQUENCE user_id_seq RESTART WITH 2')
