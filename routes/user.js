@@ -9,6 +9,11 @@ const knex = require('../db/knex');
 //     res.json(data)
 //   });
 // });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 router.get('/:id', (req, res) => {
   if (!isNaN(req.params.id) && req.user.id == req.params.id) {
