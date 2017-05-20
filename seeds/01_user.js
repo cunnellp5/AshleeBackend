@@ -7,7 +7,7 @@ exports.seed = (knex, Promise) => {
         const users = [
           {
             id: 1,
-            email: 'ashsophia23@gmail.com',
+            email: process.env.EMAIL,
             password: bcrypt.hashSync(process.env.SECRET_PASSWORD, 10)
           }
         ]
