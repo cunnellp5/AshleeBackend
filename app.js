@@ -26,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  // origin: 'https://ashleesofia-cb29b.firebaseapp.com',
-  origin: 'http://localhost:8080',
+  origin: 'https://ashleesofia-cb29b.firebaseapp.com',
+  // origin: 'http://localhost:8080',
   credentials: true
 }));
 
